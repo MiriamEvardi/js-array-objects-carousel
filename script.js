@@ -33,9 +33,6 @@ const images = [
 
 
 
-// Come nel primo carosello realizzato, focalizziamoci prima sulla creazione del markup statico:
-// costruiamo il container e inseriamo l'immagine grande in modo da poter stilare lo slider.
-
 const sliderElement = document.getElementById("slider");
 
 
@@ -44,3 +41,53 @@ for (let i = 0; i < images.length; i++) {
 
     sliderElement.innerHTML += `<img src="${imagesObject.image}" >`;
 }
+
+
+document.querySelector("#slider img:nth-of-type(1)").className = "active";
+
+
+let sliderNumber = 1;
+
+document.querySelector("#arrow-up").addEventListener("click", () => {
+
+    if (sliderNumber < images.length) {
+
+        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
+
+        sliderNumber++;
+
+        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
+
+    } else {
+
+        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
+
+        sliderNumber = 1;
+
+        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
+    }
+
+})
+
+
+
+document.querySelector("#arrow-down").addEventListener("click", () => {
+
+    if (sliderNumber > 1) {
+
+        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
+
+        sliderNumber--;
+
+        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
+
+    } else {
+
+        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
+
+        sliderNumber = images.length;
+
+        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
+
+    }
+})
