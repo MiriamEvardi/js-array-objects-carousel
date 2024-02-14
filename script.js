@@ -30,8 +30,16 @@ const images = [
     }
 ];
 
+const titleImages = document.getElementById("title");
+const textImages = document.getElementById("text");
+
+let sliderNumber = 1;
+
 function changeSlide(direction) {
+
     document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
+
+    const thumbnails = document.querySelectorAll(".thumb-img");
 
     sliderNumber += direction;
 
@@ -42,12 +50,27 @@ function changeSlide(direction) {
         sliderNumber = images.length;
     }
 
+    thumbnails.forEach((element, index) => {
+
+        element.classList.remove("thumb-active");
+
+        if (index == sliderNumber - 1) {
+            element.classList.add("thumb-active");
+
+        }
+    })
+
     document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
+
 
 
     document.getElementById("title").textContent = images[sliderNumber - 1].title;
     document.getElementById("text").textContent = images[sliderNumber - 1].text;
 }
+
+
+titleImages.innerText = images[0].title;
+textImages.innerText = images[0].text;
 
 
 const sliderElement = document.getElementById("slider");
@@ -59,24 +82,22 @@ for (let i = 0; i < images.length; i++) {
     let imagesObject = images[i];
 
     sliderElement.innerHTML += `<img src="./img/${imagesObject.image}" >`;
-    thumbnailElement.innerHTML += `<div class= "thumbnail-container"><img src="./img/${imagesObject.image}" ></div>`;
+    thumbnailElement.innerHTML += `<div class= "thumbnail-container"><img src="./img/${imagesObject.image}" class="thumb-img"></div>`;
 }
 
 
 document.querySelector("#slider img:nth-of-type(1)").className = "active";
-
-let sliderNumber = 1;
+document.querySelector(".thumbnail-container img:nth-of-type(1)").classList.add("thumb-active");
 
 
 document.querySelector("#arrow-up").addEventListener("click", () => {
-    changeSlide(1);
+    changeSlide(-1);
 });
 
 
 document.querySelector("#arrow-down").addEventListener("click", () => {
-    changeSlide(-1);
+    changeSlide(1);
 });
 
-changeSlide(0);
 
 
