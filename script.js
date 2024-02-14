@@ -30,32 +30,6 @@ const images = [
     }
 ];
 
-const sliderElement = document.getElementById("slider");
-
-
-for (let i = 0; i < images.length; i++) {
-
-    let imagesObject = images[i];
-
-    sliderElement.innerHTML += `<img src="${imagesObject.image}" >`;
-}
-
-
-document.querySelector("#slider img:nth-of-type(1)").className = "active";
-
-let sliderNumber = 1;
-
-
-document.querySelector("#arrow-up").addEventListener("click", () => {
-    changeSlide(1);
-});
-
-
-document.querySelector("#arrow-down").addEventListener("click", () => {
-    changeSlide(-1);
-});
-
-
 function changeSlide(direction) {
     document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
 
@@ -74,3 +48,36 @@ function changeSlide(direction) {
     document.getElementById("title").textContent = images[sliderNumber - 1].title;
     document.getElementById("text").textContent = images[sliderNumber - 1].text;
 }
+
+
+const sliderElement = document.getElementById("slider");
+const thumbnailElement = document.getElementById("thumbnail");
+
+
+for (let i = 0; i < images.length; i++) {
+
+    let imagesObject = images[i];
+
+    sliderElement.innerHTML += `<img src="${imagesObject.image}" >`;
+    thumbnailElement.innerHTML += `<div class= "cassone"><img src="${imagesObject.image}" ></div>`;
+
+}
+
+
+document.querySelector("#slider img:nth-of-type(1)").className = "active";
+
+let sliderNumber = 1;
+
+
+document.querySelector("#arrow-up").addEventListener("click", () => {
+    changeSlide(1);
+});
+
+
+document.querySelector("#arrow-down").addEventListener("click", () => {
+    changeSlide(-1);
+});
+
+changeSlide(0);
+
+

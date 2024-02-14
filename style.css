@@ -76,3 +76,18 @@
     left: 10%;
 
 }
+
+#thumbnail {
+    width: calc(100% /7);
+    height: 100px;
+}
+
+.cassone {
+
+    height: 100px;
+}
+
+.cassone img {
+    object-fit: contain;
+    width: 100%;
+}
