@@ -18,7 +18,8 @@ img {
     height: 100%;
 
     user-select: none;
-
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 
     object-fit: cover;
 }
@@ -51,7 +52,7 @@ img {
 
 
 #title {
-    position: absolute;
+
 
     padding: 10px;
 
@@ -60,24 +61,28 @@ img {
 
     color: white;
 
-    bottom: 12%;
-    right: 0%;
 }
 
 
 #text {
-    position: absolute;
+
     text-align: end;
     line-height: 1.2em;
 
     padding: 10px;
 
-
     color: white;
 
+
+}
+
+.text-container {
+    text-align: end;
+    margin-right: 10px;
+    position: absolute;
     bottom: 2%;
     left: 10%;
-
+    background-color: rgba(0, 0, 0, 0.424);
 }
 
 #thumbnail {
@@ -88,6 +93,14 @@ img {
 .thumbnail-container img {
     object-fit: contain;
     width: 100%;
+}
+
+#thumbnail .thumbnail-container:first-child img {
+    border-top-right-radius: 20px;
+}
+
+#thumbnail .thumbnail-container:last-child img {
+    border-bottom-right-radius: 20px;
 }
 
 #thumbnail img:not(.active) {

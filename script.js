@@ -1,37 +1,38 @@
 const images = [
     {
         image: 'wallhaven-7396ky.jpg',
-        title: "Marvel's Spiderman Miles Morale",
+        title: "Princess Mononoke",
         text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.'
     },
 
     {
         image: 'totoro.jpg',
-        title: 'Ratchet & Clank: Rift Apart',
+        title: 'Totoro',
         text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.'
     },
 
     {
         image: 'la-citta-incantata.jpg',
-        title: 'Fortnite',
+        title: 'Spirited Away',
         text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos."
     },
 
     {
         image: '1198624-1920x1080-desktop-full-hd-studio-ghibli-wallpaper-photo.jpg',
-        title: 'Stray',
+        title: 'Castle in the Sky',
         text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city'
     },
 
     {
         image: 'Howl.jpg',
-        title: "Marvel's Avengers",
+        title: "Howl's Moving Castle",
         text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay."
     }
 ];
 
 const titleImages = document.getElementById("title");
 const textImages = document.getElementById("text");
+
 
 let sliderNumber = 1;
 
@@ -61,8 +62,6 @@ function changeSlide(direction) {
     })
 
     document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
-
-
 
     document.getElementById("title").textContent = images[sliderNumber - 1].title;
     document.getElementById("text").textContent = images[sliderNumber - 1].text;
@@ -101,3 +100,29 @@ document.querySelector("#arrow-down").addEventListener("click", () => {
 
 
 
+let direction = 1;
+
+let timeUpElement = setInterval(function () {
+    changeSlide(direction);
+}, 3000);
+
+
+document.getElementById("reverse").addEventListener("click", () => {
+
+    //se la direzione è = 1, diventa -1. altrimenti il contrario
+    direction == 1 ? direction = -1 : direction = 1;
+
+    console.log(direction)
+})
+
+document.getElementById("play-stop").addEventListener("click", () => {
+
+    if (timeUpElement) {
+        clearInterval(timeUpElement);
+        timeUpElement = null;
+    } else {
+        timeUpElement = setInterval(function () {
+            changeSlide(direction);
+        }, 3000);
+    }
+})
