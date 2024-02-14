@@ -46,3 +46,33 @@
 
 
 }
+
+
+#title {
+    position: absolute;
+
+    padding: 10px;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    color: white;
+
+    bottom: 12%;
+    right: 0%;
+}
+
+
+#text {
+    position: absolute;
+    text-align: end;
+    line-height: 1.2em;
+    padding: 10px;
+
+
+    color: white;
+
+    bottom: 2%;
+    left: 10%;
+
+}

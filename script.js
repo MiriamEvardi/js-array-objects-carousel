@@ -1,4 +1,3 @@
-
 const images = [
     {
         image: 'img/01.webp',
@@ -29,14 +28,13 @@ const images = [
         title: "Marvel's Avengers",
         text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay."
     }
-]
-
-
+];
 
 const sliderElement = document.getElementById("slider");
 
 
 for (let i = 0; i < images.length; i++) {
+
     let imagesObject = images[i];
 
     sliderElement.innerHTML += `<img src="${imagesObject.image}" >`;
@@ -45,49 +43,34 @@ for (let i = 0; i < images.length; i++) {
 
 document.querySelector("#slider img:nth-of-type(1)").className = "active";
 
-
 let sliderNumber = 1;
 
+
 document.querySelector("#arrow-up").addEventListener("click", () => {
-
-    if (sliderNumber < images.length) {
-
-        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
-
-        sliderNumber++;
-
-        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
-
-    } else {
-
-        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
-
-        sliderNumber = 1;
-
-        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
-    }
-
-})
-
+    changeSlide(1);
+});
 
 
 document.querySelector("#arrow-down").addEventListener("click", () => {
+    changeSlide(-1);
+});
 
-    if (sliderNumber > 1) {
 
-        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
+function changeSlide(direction) {
+    document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
 
-        sliderNumber--;
+    sliderNumber += direction;
 
-        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
+    if (sliderNumber > images.length) {
+        sliderNumber = 1;
 
-    } else {
-
-        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.remove("active");
-
+    } else if (sliderNumber < 1) {
         sliderNumber = images.length;
-
-        document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
-
     }
-})
+
+    document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
+
+
+    document.getElementById("title").textContent = images[sliderNumber - 1].title;
+    document.getElementById("text").textContent = images[sliderNumber - 1].text;
+}
