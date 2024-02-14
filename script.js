@@ -2,36 +2,38 @@ const images = [
     {
         image: 'wallhaven-7396ky.jpg',
         title: "Princess Mononoke",
-        text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.'
+        text: "A young prince, seeking the fulfillment of a prophecy, encounters a girl raised by wolves and the two embark on an epic journey to save the forest from destruction."
     },
 
     {
         image: 'totoro.jpg',
         title: 'Totoro',
-        text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.'
+        text: "Two young sisters move to the countryside with their father and discover the magical creatures living in the nearby forest, including the gentle and mysterious Totoro."
     },
 
     {
         image: 'la-citta-incantata.jpg',
         title: 'Spirited Away',
-        text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos."
+        text: "A young girl finds herself trapped in a mysterious world of spirits and must navigate through an enchanted bathhouse to rescue her parents and return to the human world."
     },
 
     {
         image: '1198624-1920x1080-desktop-full-hd-studio-ghibli-wallpaper-photo.jpg',
         title: 'Castle in the Sky',
-        text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city'
+        text: "A young boy and a girl with a mysterious crystal pendant embark on a high-flying adventure to find the legendary floating city of Laputa and uncover its secrets."
     },
 
     {
         image: 'Howl.jpg',
         title: "Howl's Moving Castle",
-        text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay."
+        text: "A young woman is transformed into an elderly woman by a curse and seeks refuge in the moving castle of the enigmatic wizard Howl, where she discovers love and the power of friendship."
     }
 ];
 
 const titleImages = document.getElementById("title");
 const textImages = document.getElementById("text");
+const sliderElement = document.getElementById("slider");
+const thumbnailElement = document.getElementById("thumbnail");
 
 
 let sliderNumber = 1;
@@ -62,7 +64,6 @@ function changeSlide(direction) {
     })
 
     document.querySelector(`#slider img:nth-of-type(${sliderNumber})`).classList.add("active");
-
     document.getElementById("title").textContent = images[sliderNumber - 1].title;
     document.getElementById("text").textContent = images[sliderNumber - 1].text;
 }
@@ -70,10 +71,6 @@ function changeSlide(direction) {
 
 titleImages.innerText = images[0].title;
 textImages.innerText = images[0].text;
-
-
-const sliderElement = document.getElementById("slider");
-const thumbnailElement = document.getElementById("thumbnail");
 
 
 for (let i = 0; i < images.length; i++) {
